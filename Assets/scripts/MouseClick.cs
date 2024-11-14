@@ -9,10 +9,7 @@ public class MouseClick : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
             if(hit)
             {
-                if (hit.transform.tag == "Carte")
-                {
-                    //smth
-                }
+                Debug.Log(hit.transform.name);
             }
         }
     }
