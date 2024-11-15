@@ -53,28 +53,28 @@ public class Card : MonoBehaviour
     public void monumentEffect(Player player)
     {
 
-        foreach(var monument in unlockedMonuments)
+        foreach (var monument in unlockedMonuments)
         {
-            if(monument.name == "Gare")
+            if (monument.name == "Gare")
             {
                 player.dices.Add(new Dice());
             }
-            if(monument.name == "Tour radio")
+            if (monument.name == "Tour radio")
             {
                 player.reroll = true;
             }
-            if(monument.name == "Centre commercial")
+            if (monument.name == "Centre commercial")
             {
-                foreach(var card in player.cards)
+                foreach (var card in player.cards)
                 {
-                    if(card.info.type == "Restauration" || card.info.type == "Magasin")
+                    if (card.info.type == "Restauration" || card.info.type == "Magasin")
                     {
                         card.info.gainValue += 1;
                     }
                 }
 
             }
-            if(monument.name == "Parc")
+            if (monument.name == "Parc")
             {
                 if (player.dices[0].face == player.dices[1].face)
                 {
@@ -82,8 +82,9 @@ public class Card : MonoBehaviour
                 }
             }
 
-    //    }
-    
+        }
+
+    }
 
 
 
@@ -102,4 +103,5 @@ public class Card : MonoBehaviour
     {
         
     }
+
 }
