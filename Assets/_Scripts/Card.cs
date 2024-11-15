@@ -9,13 +9,13 @@ public class Card : MonoBehaviour
     public CardScriptable info = new CardScriptable();
     public MonumentScriptable monument;
 
-    List<Card> unlockedMonuments = new List<Card>(); //Liste où y aura tous les monuments débloqués par le joueur / ia
+    List<Card> unlockedMonuments = new List<Card>(); 
     
 
 
-    //La fonction qui gère les effets des cartes hors monuments
+    //La fonction qui gï¿½re les effets des cartes hors monuments
 
-    //CardPlayed correspond à la carte joué pendant le tour actuel (est définit dans la classe player)
+    //CardPlayed correspond ï¿½ la carte jouï¿½ pendant le tour actuel (est dï¿½finit dans la classe player)
     public void Effect(Player playerSendingEffect, Player playerReceivingEffect)
     {
 
@@ -49,7 +49,7 @@ public class Card : MonoBehaviour
 
 
     }
-    //Gère les effets des monuments
+    //Gï¿½re les effets des monuments
     public void monumentEffect(Player player)
     {
 
@@ -82,8 +82,8 @@ public class Card : MonoBehaviour
                 }
             }
 
-        }
-    }
+    //    }
+    
 
 
 
