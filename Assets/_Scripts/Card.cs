@@ -57,7 +57,7 @@ public class Card : MonoBehaviour
         {
             if (monument.name == "Gare")
             {
-                player.dices.Add(new Dice());
+                //player.dices.Add(new Dice());
             }
             if (monument.name == "Tour radio")
             {
@@ -76,10 +76,10 @@ public class Card : MonoBehaviour
             }
             if (monument.name == "Parc")
             {
-                if (player.dices[0].face == player.dices[1].face)
+                /*if (player.dices[0].face == player.dices[1].face)
                 {
                     //rejouer c'est pas mon probleme :)
-                }
+                }*/
             }
 
         }

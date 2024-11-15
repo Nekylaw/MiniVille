@@ -7,28 +7,51 @@ public class Player : MonoBehaviour
 {
     public bool isAI;
     public int money = 3;
-    public List<Card> cards;
-    public List<Card> monuments = new();
-    public List<Dice> dices = new() { new Dice() };
-    public bool reroll = false;
+    [SerializeField] public List<Card> cards;
+    [SerializeField] public List<GameObject> dices;
 
-    /*  ____à mettre dans game____
-     *  
-    public void activateCards(int diceRoll, Player activePlayer)
+    [HideInInspector]
+    public List<GameObject> monuments = new();
+    public bool reroll = false;
+    public bool purshasing = false;
+
+    private void Update()
     {
-        foreach (var card in cards)
+        if(purshasing)
         {
-            if (card.card.diceValue1 == diceRoll || card.card.diceValue2 == diceRoll)
+            if (Input.GetMouseButtonDown(0))
             {
-                // Activation selon le type de carte
-                if ((card.card.type == "red" && activePlayer != this) ||   // Rouge : tour d'un adversaire
-                    (card.card.type == "green" && activePlayer == this) || // Verte : tour du joueur
-                    (card.card.type == "blue"))                            // Bleue : toujours active
+                RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+                if (hit)
                 {
-                    card.Effect(this, );
+                    if (hit.transform.tag == "Purshasable")
+                    {
+                        cards.Add(hit.collider.gameObject.GetComponent<Card>()); // puis changer coordonnées ou enlever de pile puis creer gameobject dans liste
+                        purshasing = false;
+                    }
                 }
             }
         }
     }
-    */
+
+    public void Dice()
+    {
+        dices[0].GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+        dices[0].GetComponent<Dice>().Throw();
+    }
+
+    public void DoubleDice()
+    {
+        if (dices.Count > 1)
+        {
+            dices[0].GetComponent<RectTransform>().anchoredPosition = new Vector2(-70, 0);
+            dices[0].GetComponent<Dice>().Throw();
+            dices[1].GetComponent<RectTransform>().anchoredPosition = new Vector2(70, 0);
+            dices[1].GetComponent<Dice>().Throw();
+        }
+        else
+        {
+            Dice();
+        }
+    }
 }
