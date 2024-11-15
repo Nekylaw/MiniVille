@@ -6,7 +6,7 @@ public class Card : MonoBehaviour
 {
 
 
-    public CardScriptable card = new CardScriptable();
+    public CardScriptable info = new CardScriptable();
     public MonumentScriptable monument;
 
     List<Card> unlockedMonuments = new List<Card>(); //Liste où y aura tous les monuments débloqués par le joueur / ia
@@ -16,70 +16,69 @@ public class Card : MonoBehaviour
     //La fonction qui gère les effets des cartes hors monuments
 
     //CardPlayed correspond à la carte joué pendant le tour actuel (est définit dans la classe player)
-    public void Effect(player cardPlayed, string playerSendingEffect, string playerReceivingEffect, int moneyCurrentlayer)
+    public void Effect(Player playerSendingEffect, Player playerReceivingEffect)
     {
 
         
-        if (cardPlayed.color == "Bleu")
+        if (info.color == "Bleu")
         {
 
 
 
-            playerSendingEffect.money += cardPlayed.gainValue;
-            playerReceivingEffect.money += cardPlayed.gainValue;
+            playerSendingEffect.money += info.gainValue;
+            playerReceivingEffect.money += info.gainValue;
 
             
         }
-        if (cardPlayed.color == "Rouge")
+        if (info.color == "Rouge")
         {
-            playerReceivingEffect.money += cardPlayed.gainValue;
+            playerReceivingEffect.money += info.gainValue;
         }
-        if (cardPlayed.color == "Vert")
+        if (info.color == "Vert")
         {
-            if (cardPlayed.name)
-                playerSendingEffect.money += cardPlayed.gainValue;
+            /*if (card.name)
+                playerSendingEffect.money += card.gainValue;*/
         }
-        if (cardPlayed.color == "Violet")
+        if (info.color == "Violet")
         {
 
-            playerSendingEffect.money += cardPlayed.gainValue;
-            playerReceivingEffect.money -= cardPlayed.gainValue;
+            playerSendingEffect.money += info.gainValue;
+            playerReceivingEffect.money -= info.gainValue;
         }
 
 
 
     }
     //Gère les effets des monuments
-    public void monumentEffect()
+    public void monumentEffect(Player player)
     {
 
         foreach(var monument in unlockedMonuments)
         {
             if(monument.name == "Gare")
             {
-                player.nbDiceAllowed = 2;
+                player.dices.Add(new Dice());
             }
             if(monument.name == "Tour radio")
             {
-                player.rerollDice = true;
+                player.reroll = true;
             }
             if(monument.name == "Centre commercial")
             {
-                foreach(var card in listCardPlayer)
+                foreach(var card in player.cards)
                 {
-                    if(card.type == "Restauration" || card.type == "Magasin")
+                    if(card.info.type == "Restauration" || card.info.type == "Magasin")
                     {
-                        card.gainValue += 1;
+                        card.info.gainValue += 1;
                     }
-                    
                 }
 
             }
             if(monument.name == "Parc")
-            { 
-                if(player.dice1 == PlayerPrefs.dice2)
+            {
+                if (player.dices[0].face == player.dices[1].face)
                 {
-
+                    //rejouer c'est pas mon probleme :)
                 }
             }
 

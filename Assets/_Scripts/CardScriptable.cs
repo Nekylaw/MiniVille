@@ -8,9 +8,6 @@ using UnityEditor.Rendering;
 [CreateAssetMenu(fileName = "CardScriptable", menuName = "My game / CardScriptable")]
 public class CardScriptable : ScriptableObject
 {
-
-
-    
     public int cost;
     public int gainValue;
     public string cardName;
@@ -22,6 +19,4 @@ public class CardScriptable : ScriptableObject
     public int diceValue1;
     public int diceValue2;
     public int cardsLeftStore = 6;
-
-
 }
