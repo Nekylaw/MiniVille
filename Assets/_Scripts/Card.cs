@@ -22,8 +22,12 @@ public class Card : MonoBehaviour
         
         if (cardPlayed.color == "Bleu")
         {
+
+
+
             playerSendingEffect.money += cardPlayed.gainValue;
             playerReceivingEffect.money += cardPlayed.gainValue;
+
             
         }
         if (cardPlayed.color == "Rouge")
@@ -69,6 +73,7 @@ public class Card : MonoBehaviour
                     }
                     
                 }
+
             }
             if(monument.name == "Parc")
             { 
