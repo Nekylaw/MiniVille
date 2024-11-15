@@ -6,8 +6,6 @@ public class MonumentScriptable : ScriptableObject
     public int cost;
     public int gainValue;
     public string cardName;
-    public string type;
-    public string color;
     public GameObject spriteCard;
     public int stackable;
     public int anyRound;
