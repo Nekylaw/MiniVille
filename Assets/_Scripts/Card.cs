@@ -6,8 +6,9 @@ public class Card : MonoBehaviour
 {
 
 
-    public CardScriptable info = new CardScriptable();
+    [SerializeField] CardScriptable info = new CardScriptable();
     public MonumentScriptable monument;
+
 
     List<Card> unlockedMonuments = new List<Card>(); 
     
@@ -18,35 +19,29 @@ public class Card : MonoBehaviour
     //CardPlayed correspond � la carte jou� pendant le tour actuel (est d�finit dans la classe player)
     public void Effect(Player playerSendingEffect, Player playerReceivingEffect)
     {
-
         
-        if (info.color == "Bleu")
+        if (info.color == "Blue")
         {
-
-
 
             playerSendingEffect.money += info.gainValue;
             playerReceivingEffect.money += info.gainValue;
-
-            
+       
         }
-        if (info.color == "Rouge")
+        if (info.color == "Red")
         {
             playerReceivingEffect.money += info.gainValue;
         }
-        if (info.color == "Vert")
+        if (info.color == "Green")
         {
             /*if (card.name)
                 playerSendingEffect.money += card.gainValue;*/
         }
-        if (info.color == "Violet")
+        if (info.color == "Purple")
         {
 
             playerSendingEffect.money += info.gainValue;
             playerReceivingEffect.money -= info.gainValue;
         }
-
-
 
     }
     //G�re les effets des monuments
@@ -86,13 +81,7 @@ public class Card : MonoBehaviour
 
     }
 
-
-
-
-
-
-
-
+     
     void Start()
     {
         

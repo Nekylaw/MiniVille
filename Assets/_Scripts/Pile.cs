@@ -1,17 +1,8 @@
 using UnityEngine;
 
-public class MonumentScriptable : ScriptableObject
+public class Pile : MonoBehaviour
 {
 
-    public int cost;
-    public int gainValue;
-    public string cardName;
-    public GameObject spriteCard;
-    public int stackable;
-    public int anyRound;
-   
-   
-    
 
 
 
